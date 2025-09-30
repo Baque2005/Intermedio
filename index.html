@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canal de Códigos Systecode</title>
+  <style>
+    .web-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, #4f8cff 60%, #1a2a4d 100%);
+      color: #fff;
+      font-size: 1.08em;
+      font-weight: 600;
+      border: none;
+      border-radius: 16px;
+      padding: 14px 28px 14px 44px;
+      box-shadow: 0 4px 32px #4f8cff33;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      min-width: 220px;
+      max-width: 90vw;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .web-btn:hover {
+      transform: scale(1.07) translateY(-2px);
+      box-shadow: 0 8px 40px #4f8cff55;
+    }
+    .web-btn .icon {
+      width: 28px;
+      height: 28px;
+      display: inline-block;
+      background: url('https://cdn-icons-png.flaticon.com/512/841/841364.png') no-repeat center/cover;
+      filter: drop-shadow(0 2px 8px #fff8);
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .web-btn { font-size: 1em; padding: 10px 8vw 10px 28px; min-width: 120px; }
+    }
+    @media (max-width: 420px) {
+      .web-btn { font-size: 0.95em; padding: 8px 2vw 8px 18px; }
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(ellipse at 60% 40%, #1a2a4d 0%, #0a0e1a 100%);
+      overflow: hidden;
+      font-family: 'Segoe UI', Verdana, Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+      padding: 0 2vw;
+    }
+    .logo {
+      margin-top: 38px;
+      width: 170px;
+      max-width: 60vw;
+      height: auto;
+      filter: drop-shadow(0 6px 32px #b97aff88) drop-shadow(0 0 0 #fff0);
+      animation: logoPop 1.2s cubic-bezier(.4,2,.6,1);
+      user-select: none;
+      transition: transform 0.18s;
+    }
+    .logo:active {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    @keyframes logoPop {
+      0% { transform: scale(0.7) rotate(-8deg); opacity: 0; }
+      60% { transform: scale(1.15) rotate(3deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .whatsapp-btn {
+      margin-top: 38px;
+      background: linear-gradient(90deg, #25d366 60%, #128c7e 100%);
+      color: #fff;
+      font-size: 1.15em;
+      font-weight: 600;
+      border: none;
+      border-radius: 16px;
+      padding: 16px 28px 16px 44px;
+      box-shadow: 0 4px 32px #25d36633;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      animation: btnIn 1.2s 0.5s cubic-bezier(.4,2,.6,1) backwards;
+      min-width: 220px;
+      max-width: 90vw;
+      text-align: center;
+    }
+    .whatsapp-btn:hover {
+      transform: scale(1.07) translateY(-2px);
+      box-shadow: 0 8px 40px #25d36655;
+    }
+    .whatsapp-btn .icon {
+      width: 28px;
+      height: 28px;
+      display: inline-block;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center/cover;
+      filter: drop-shadow(0 2px 8px #fff8);
+      flex-shrink: 0;
+    }
+    @keyframes btnIn {
+      0% { opacity: 0; transform: translateY(40px) scale(0.8); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .info {
+      margin-top: 38px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 18px;
+      padding: 14px 18px;
+      font-size: 1.05em;
+      color: #6d2e9c;
+      box-shadow: 0 2px 18px #b97aff33;
+      text-align: center;
+      max-width: 96vw;
+      animation: infoFade 1.2s 1.1s cubic-bezier(.4,2,.6,1) backwards;
+    }
+    @keyframes infoFade {
+      0% { opacity: 0; transform: translateY(40px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    /* Animación de fondo */
+    .bubbles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      touch-action: none;
+    }
+
+    @media (max-width: 700px) {
+      .logo { width: 120px; max-width: 80vw; margin-top: 22px; }
+      .whatsapp-btn { font-size: 1em; padding: 12px 12vw 12px 38px; min-width: 120px; }
+      .info { font-size: 0.98em; margin-top: 22px; padding: 10px 6vw; }
+    }
+    @media (max-width: 420px) {
+      .logo { width: 80px; margin-top: 12px; }
+      .whatsapp-btn { font-size: 0.95em; padding: 10px 2vw 10px 28px; }
+      .info { font-size: 0.93em; margin-top: 12px; padding: 8px 2vw; }
+    }
+  </style>
+</head>
+<body>
+  <canvas class="bubbles"></canvas>
+  <div class="container">
+    <img class="logo" src="https://github.com/Baque2005/Organizador/blob/master/Systecode.png?raw=true" alt="Logo Systecode" />
+    <a class="whatsapp-btn" href="https://whatsapp.com/channel/0029Vb64QobFy728nFRgGD0W" target="_blank" rel="noopener">
+      <span class="icon"></span>
+      Unirme al canal de WhatsApp
+    </a>
+    <div class="info">
+      En el canal de WhatsApp encontrarás la información y actualización importante de los códigos, archivos o links de dedicatorias al instante.<br>
+      ¡Únete para no perderte nada!
+    </div>
+    <div class="tutorial" style="margin-top:32px;max-width:98vw;">
+      <h3 style="color:#b97aff;font-size:1.08em;margin-bottom:12px;">¿No sabes cómo usar la web? Mira este video tutorial:</h3>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:18px;box-shadow:0 2px 18px #0007;max-width:480px;margin:auto;">
+        <iframe src="https://www.youtube.com/embed/JLrdq9kmLjk?si=dZlBcp5Hg4cKXVv-" title="Video tutorial" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Fondo interactivo: burbujas + estrellas + parallax con mouse/touch
+    const canvas = document.querySelector('.bubbles');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    function resize() {
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w; canvas.height = h;
+    }
+    window.addEventListener('resize', resize); resize();
+    // Burbujas
+    const bubbles = [];
+    for(let i=0;i<32;i++){
+      bubbles.push({
+        x: Math.random()*w,
+        y: h + Math.random()*h*0.5,
+        r: 18+Math.random()*32,
+        speed: 0.5+Math.random()*1.2,
+        drift: (Math.random()-0.5)*0.7,
+        alpha: 0.18+Math.random()*0.18,
+        color: `hsl(${220+Math.random()*40},80%,80%)`
+      });
+    }
+    // Estrellas
+    const stars = [];
+    for(let i=0;i<90;i++){
+      stars.push({
+        x: Math.random()*w,
+        y: Math.random()*h*0.9,
+        r: 0.7+Math.random()*1.7,
+        alpha: 0.18+Math.random()*0.7
+      });
+    }
+    // Parallax
+    let parallaxX = 0, parallaxY = 0, targetX = 0, targetY = 0;
+    function setParallax(e) {
+      let x, y;
+      if(e.touches && e.touches.length) {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+      } else {
+        x = e.clientX;
+        y = e.clientY;
+      }
+      targetX = (x - w/2) / w * 40;
+      targetY = (y - h/2) / h * 40;
+    }
+    window.addEventListener('mousemove', setParallax);
+    window.addEventListener('touchmove', setParallax, {passive:true});
+    function drawBubbles(){
+      ctx.clearRect(0,0,w,h);
+      // Estrellas
+      for(const s of stars){
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(s.x + parallaxX*0.2, s.y + parallaxY*0.2, s.r, 0, Math.PI*2);
+        ctx.globalAlpha = s.alpha;
+        ctx.fillStyle = '#fff';
+        ctx.shadowColor = '#b7cfff';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+        ctx.restore();
+      }
+      // Burbujas
+      for(const b of bubbles){
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(b.x + parallaxX*0.5, b.y + parallaxY*0.5, b.r, 0, Math.PI*2);
+        ctx.fillStyle = b.color;
+        ctx.globalAlpha = b.alpha;
+        ctx.shadowColor = '#3cf';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+        ctx.restore();
+        b.y -= b.speed;
+        b.x += b.drift;
+        if(b.y + b.r < 0){
+          b.x = Math.random()*w;
+          b.y = h + b.r + Math.random()*h*0.3;
+          b.r = 18+Math.random()*32;
+          b.speed = 0.5+Math.random()*1.2;
+          b.drift = (Math.random()-0.5)*0.7;
+          b.alpha = 0.18+Math.random()*0.18;
+          b.color = `hsl(${220+Math.random()*40},80%,80%)`;
+        }
+      }
+      // Parallax anim
+      parallaxX += (targetX - parallaxX)*0.08;
+      parallaxY += (targetY - parallaxY)*0.08;
+      requestAnimationFrame(drawBubbles);
+    }
+    drawBubbles();
+  </script>
+</body>
+</html>
